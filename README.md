@@ -1,3 +1,6 @@
+> 📐 Questo progetto segue la **LINEAGUIDA v1.0** di [registro-delle-idee](https://github.com/gianpaolobol/registro-delle-idee/blob/main/LINEAGUIDA.md).
+> Stato attuale: [`STATO.md`](STATO.md).
+
 # Penna Viva
 
 **Il tuo libro, scritto con la tua voce.**

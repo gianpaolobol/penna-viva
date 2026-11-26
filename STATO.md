@@ -1,45 +1,50 @@
 # STATO — Penna Viva
 
-_Ultimo aggiornamento: 26/11/2026 · Claude_
+## Cos'è
+App di scrittura creativa con IA: racconti a voce o per iscritto e la penna scrive con il tuo stile.
 
-**Fase:** 1 (prima versione) · **Sprint:** 1 · **Stato:** codice completo e verificato in locale, non ancora pubblicato online.
+## Fase
+in sviluppo
 
-## Funziona (verificato in locale con il fornitore IA finto)
+## Traguardo minimo
+Online con 20 persone vere che completano almeno una "giornata in 5 generi" (proposto [Claude], da confermare [Gian]) — raggiunto: no
 
-- Registrazione con conferma 18+ e consenso, accesso, uscita, freno ai tentativi di accesso
-- Diario: pagine scritte o dettate a voce (Web Speech API, it-IT), eliminazione
-- **La tua giornata in 5 generi:** racconto → 5 episodi (horror, giallo, fiaba, fantascienza, rosa)
-  → carosello → immagini 1080×1350 da condividere → pagina pubblica `/g/:id` con "Racconta la tua giornata"
-- **DNA narrativo:** dai testi del diario (min. 200 caratteri) → 5 tratti, voce, temi, genere affine,
-  consiglio → card condivisibile
-- Quota gratuita (3 al giorno per utente) e tetto globale giornaliero sulla nostra chiave
-- "Accedi con OpenRouter" (OAuth PKCE): chiave sul telefono, nessun limite nostro
-- Cancellazione completa dell'account e dei dati
-- PWA installabile (manifest, icone, service worker)
-- Test: 16 test unitari (`worker/`), prova end-to-end nel browser di tutte le schermate
+## Dove è pubblicata
+Non ancora pubblicata. Codice completo e verificato in locale con fornitore IA finto.
 
-## Da fare per andare online (serve Gian)
+## Prossimi passi
+1. Creare il repository GitHub `penna-viva` — [Gian]; poi push del codice — [Claude]
+2. Account Cloudflare, chiave Google AI Studio con tetto di spesa basso — [Gian]; pubblicazione Worker e Pages (`docs/PUBBLICAZIONE.md`) — [Claude]
+3. Prova della dettatura su iPhone 13 mini (Safari) e Android — [Gian]
+4. Test con 10–20 persone vere, comprese persone anziane — [Gian]
+5. Revisione indipendente del codice dell'intermediario — [Codex]
 
-1. Creare la repo GitHub `penna-viva` e caricare il codice
-2. Account Cloudflare → D1 + Worker + Pages (guida: `docs/PUBBLICAZIONE.md`)
-3. Google AI Studio con fatturazione attiva e tetto di spesa basso → segreto `GEMINI_API_KEY`
-4. Verificare il nome del modello Gemini più economico disponibile (`GEMINI_MODEL` in `worker/wrangler.toml`)
-5. Provare la dettatura su iPhone 13 mini (Safari) e Android
+## Blocchi
+- Repository non ancora creato su GitHub (da questa sessione la creazione è bloccata) — [Gian]
+- Nessuna chiave IA reale configurata — [Gian]
 
-## Prossimi passi (sprint 1 → 2)
+## Componenti condivisi
+- Usa: —
+- Offre: account e sessioni, coda IA multi-fornitore con tetti di spesa, validazione JSON, dettatura vocale,
+  Accedi con OpenRouter, immagini condivisibili, pagina pubblica (vedi `COMPONENTI.md` del registro)
 
-- Test con 10–20 persone vere, comprese persone anziane
-- Spostare l'esecuzione dei lavori su Cloudflare Queues (oggi `ctx.waitUntil`)
-- Recupero password (serve un servizio email)
-- Filtri automatici su marchi e personaggi protetti (oggi solo istruzioni nel prompt)
-- Pagina privacy e termini (verifica di un professionista prima delle vendite)
-- Immagine di anteprima (og:image) per la pagina pubblica
-- Tema chiaro "Carta pop" per i momenti di festa e condivisione
-- Fase 2: copertine e immagini, libri da colorare, libri per bambini personalizzati, crediti
+## Linea guida
+Versione seguita: 1.0. Deroghe: nessuna. Il backend sta in `worker/` (Cloudflare Worker), come previsto da LINEAGUIDA §4.
 
-## Punti aperti
+## Funziona (verificato in locale)
+- Registrazione con conferma 18+ e consenso, accesso, uscita, freno ai tentativi
+- Diario scritto o dettato (Web Speech API, it-IT)
+- "La tua giornata in 5 generi": carosello, immagini 1080×1350, pagina pubblica `/g/:id`
+- DNA narrativo con card condivisibile
+- Quota gratuita (3 al giorno) e tetto globale giornaliero; "Accedi con OpenRouter" (PKCE)
+- Cancellazione completa dell'account; PWA installabile
+- 16 test unitari, prova end-to-end nel browser di tutte le schermate
 
-- Nome definitivo (si parte con "Penna Viva")
-- In Chrome la Web Speech API usa il servizio di Google per il riconoscimento: l'audio non arriva
-  a noi, ma non resta sul telefono. Su Safari iOS recente il riconoscimento avviene sul dispositivo.
-  Va detto con chiarezza nella pagina privacy.
+## Dopo il traguardo minimo
+Cloudflare Queues al posto di `ctx.waitUntil`, recupero password, filtri su marchi protetti,
+pagina privacy e termini, og:image, tema chiaro "Carta pop", poi fase 2 (copertine, libri da colorare,
+libri per bambini, crediti). Nota: in Chrome la dettatura usa il servizio di Google; va scritto nella privacy.
+
+## Registro aggiornamenti
+- 2026-11-26 [Claude] Prima versione (fase 1, sprint 1) scritta e verificata in locale.
+- 2026-11-26 [Claude] Allineato alla LINEAGUIDA v1.0.

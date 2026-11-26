@@ -1,21 +1,15 @@
 # AGENTS.md — Penna Viva
 
-Protocollo comune per gli agenti IA che lavorano su questa repo (Claude, ChatGPT/Codex e altri),
-secondo le regole della super piattaforma di Gian (repo `registro-delle-idee`).
+> **Leggi prima `LINEAGUIDA.md`** (in questa cartella). È la linea guida comune a tutti i progetti
+> di Gian e prevale su questo file. Poi leggi `STATO.md`.
 
-## Regole di collaborazione
+## [Gian] Protocollo comune
 
-1. **Leggi prima di scrivere.** All'inizio di ogni sessione leggi questo file e `STATO.md`.
-2. **Non riscrivere ciò che ha scritto un altro agente.** Si aggiunge, si commenta, si propone.
-   Una modifica a una sezione altrui va motivata nel registro qui sotto.
-3. **Firma ogni intervento** nel registro con data, agente e cosa hai fatto.
-4. **Aggiorna `STATO.md`** alla fine di ogni sessione: cosa funziona, cosa manca, prossimi passi.
-5. **Niente segreti nella repo.** Le chiavi vanno nei segreti di Cloudflare (`wrangler secret put`).
-6. **Lingua:** codice, commenti e documenti in italiano.
-7. **Revisione incrociata:** chi non ha scritto un pezzo può fare da revisore indipendente
-   (come RV-01 in Forgia); le osservazioni vanno in una Issue o nella PR.
+Questo repository segue la linea guida di `gianpaolobol/registro-delle-idee`.
+Si aggiunge, non si riscrive: ogni agente scrive in una sezione firmata, con data.
+Questa sezione è fissa: non spostarla e non modificarla.
 
-## Mappa del progetto
+## [Claude] Mappa del progetto — 2026-11-26
 
 | Cartella | Cosa contiene |
 | --- | --- |
@@ -28,7 +22,7 @@ Documenti di progetto (fuori repo):
 - Planning: https://claude.ai/artifact/5eQZp1c3fnrBqEzUwGqsGp
 - Concept grafico: https://claude.ai/artifact/8Q2dLKDEjfvpRzW3CrLP53
 
-## Decisioni da rispettare
+## [Claude] Decisioni da rispettare — 2026-11-26
 
 - **Un motore, tante sezioni:** ogni sezione (narrativa, libri da colorare, fumetti…) è una
   configurazione, non codice nuovo. Gli specialisti di genere stanno in `shared/genres.js`.
@@ -42,7 +36,7 @@ Documenti di progetto (fuori repo):
 - **Niente marchi o personaggi protetti** nei prompt e nelle uscite.
 - **Compatibile con il tono di voce:** si dà del tu, frasi brevi, ironia leggera, mai tecnico.
 
-## Come si lavora
+## [Claude] Come si lavora — 2026-11-26
 
 ```bash
 # intermediario (fornitore IA finto, nessuna chiamata reale)
@@ -55,8 +49,10 @@ cd worker && npm test
 
 ## Registro degli interventi
 
-- **2026-11-26 · Claude (Opus)** — Prima versione (sprint 1): struttura della repo, specialisti
+- 2026-11-26 [Claude] Prima versione (sprint 1): struttura della repo, specialisti
   di genere, intermediario Worker + D1 (account, sessioni, coda lavori, tetti di spesa, catena di
   fornitori Gemini → OpenRouter, fornitore finto), PWA con benvenuto 18+, accesso, diario vocale,
   DNA narrativo con card condivisibile, "La tua giornata in 5 generi" con carosello, immagini e
   pagina pubblica, "Accedi con OpenRouter" (PKCE), cancellazione account. 16 test unitari.
+- 2026-11-26 [Claude] Allineato alla LINEAGUIDA v1.0: file cartello per Claude, Gemini, Copilot,
+  controllo della linea guida in CI, `STATO.md` nel formato comune.
