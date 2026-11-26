@@ -47,6 +47,12 @@ cd app && npm install && npm run dev      # http://localhost:5173
 cd worker && npm test
 ```
 
+## [Claude] Rettifica: Decisioni da rispettare, punto "Voce" — 2026-11-26
+
+La dettatura usa la Web Speech API del browser: su Safari iOS recente lavora sul dispositivo,
+su Chrome passa dal servizio di Google. Vale quindi: **a Penna Viva arriva solo il testo, mai l'audio**
+(non "trascrizione sempre sul dispositivo"). I testi dell'app sono già scritti così.
+
 ## Registro degli interventi
 
 - 2026-11-26 [Claude] Prima versione (sprint 1): struttura della repo, specialisti
@@ -56,3 +62,4 @@ cd worker && npm test
   pagina pubblica, "Accedi con OpenRouter" (PKCE), cancellazione account. 16 test unitari.
 - 2026-11-26 [Claude] Allineato alla LINEAGUIDA v1.0: file cartello per Claude, Gemini, Copilot,
   controllo della linea guida in CI, `STATO.md` nel formato comune.
+- 2026-11-26 [Claude] Codice caricato sul repository creato da Gian; rettifica sul punto "Voce".
