@@ -1,0 +1,16 @@
+{
+  "name": "penna-viva-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --var MOCK_AI:1",
+    "db:locale": "wrangler d1 execute penna-viva --local --file=schema.sql",
+    "db:remoto": "wrangler d1 execute penna-viva --remote --file=schema.sql",
+    "deploy": "wrangler deploy",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4",
+    "wrangler": "^4.20.0"
+  }
+}

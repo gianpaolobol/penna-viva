@@ -1,0 +1,198 @@
+/* Penna Viva — design system di base
+   Direzione A "Inchiostro notturno" (tema principale).
+   La direzione B "Carta pop" arriverà come tema chiaro per festa e condivisione. */
+
+:root {
+  --notte: #0E0B1F;
+  --superficie: #1A1633;
+  --superficie-2: #241F45;
+  --bordo: #4A4373;
+  --testo: #F4EFE6;
+  --testo-2: #B9B3D1;
+  --lavanda: #C4B5FD;
+  --corallo: #FF7A59;
+  --verde-acqua: #2DD4BF;
+  --inchiostro: #1B1530;
+  --errore: #FF8A8A;
+
+  --titoli: 'Fraunces', Georgia, serif;
+  --ui: 'Manrope', system-ui, -apple-system, sans-serif;
+
+  --r-s: 12px;
+  --r-m: 18px;
+  --r-l: 26px;
+  --tocco: 52px; /* bersagli grandi: l'app deve andare bene anche per i nonni */
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--notte); color: var(--testo); }
+body {
+  font-family: var(--ui);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+button, input, textarea { font: inherit; color: inherit; }
+a { color: var(--lavanda); }
+a:hover { color: #E9E2FF; }
+:focus-visible { outline: 3px solid var(--verde-acqua); outline-offset: 2px; }
+
+.schermo {
+  max-width: 520px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: calc(env(safe-area-inset-top) + 28px) 22px calc(env(safe-area-inset-bottom) + 96px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.schermo.senza-barra { padding-bottom: calc(env(safe-area-inset-bottom) + 28px); }
+
+.sopratitolo {
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--verde-acqua);
+}
+h1, h2, h3 { font-family: var(--titoli); font-weight: 600; margin: 0; line-height: 1.12; }
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 19px; }
+.accento { font-style: italic; color: var(--corallo); }
+.attenuato { color: var(--testo-2); }
+.piccolo { font-size: 14px; }
+p { margin: 0; }
+
+.riga { display: flex; gap: 12px; align-items: center; }
+.colonna { display: flex; flex-direction: column; gap: 12px; }
+.spazio { flex: 1; }
+
+/* Pulsanti */
+.btn {
+  min-height: var(--tocco);
+  border-radius: 999px;
+  border: 0;
+  padding: 0 24px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-weight: 700; font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .12s ease, opacity .12s ease;
+}
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn-primario { background: var(--corallo); color: var(--inchiostro); }
+.btn-secondario { background: transparent; color: var(--testo); border: 1.5px solid var(--bordo); }
+.btn-testo { background: transparent; color: var(--lavanda); min-height: 44px; padding: 0 8px; }
+.btn-pericolo { background: transparent; color: var(--errore); border: 1.5px solid #6B3346; }
+.btn-tondo { width: var(--tocco); padding: 0; }
+.btn-pieno { width: 100%; }
+
+/* Carte */
+.carta {
+  background: var(--superficie);
+  border-radius: var(--r-m);
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.carta-cliccabile { text-align: left; border: 0; cursor: pointer; width: 100%; }
+
+/* Moduli */
+label.campo { display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 500; }
+.input, .area {
+  background: var(--superficie);
+  border: 1.5px solid var(--bordo);
+  border-radius: var(--r-s);
+  padding: 14px 16px;
+  min-height: var(--tocco);
+  width: 100%;
+}
+.area { min-height: 140px; resize: vertical; line-height: 1.5; font-size: 18px; }
+.input:focus, .area:focus { border-color: var(--lavanda); outline: none; }
+.spunta { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; cursor: pointer; }
+.spunta input { width: 24px; height: 24px; margin: 0; flex-shrink: 0; accent-color: var(--corallo); }
+
+.avviso {
+  border-radius: var(--r-s); padding: 12px 14px; font-size: 15px;
+  background: #2A1420; color: #FFD1D1; border: 1px solid #6B3346;
+}
+.avviso-info { background: #0F2526; color: #C8F5EE; border-color: #1F5C58; }
+
+.etichetta {
+  align-self: flex-start;
+  font-size: 13px; font-weight: 700;
+  color: var(--inchiostro);
+  border-radius: 12px; padding: 4px 12px;
+}
+
+/* Barra di navigazione */
+.barra {
+  position: fixed; left: 0; right: 0; bottom: 0;
+  background: rgba(14, 11, 31, .94);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid #2A2450;
+  padding: 8px 8px calc(env(safe-area-inset-bottom) + 8px);
+  display: flex; justify-content: center;
+  z-index: 10;
+}
+.barra-dentro { display: flex; width: 100%; max-width: 520px; justify-content: space-around; }
+.barra button {
+  background: none; border: 0; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 64px; min-height: 52px;
+  font-size: 12px; font-weight: 700; color: var(--testo-2);
+}
+.barra button[aria-current='page'] { color: var(--corallo); }
+
+/* Carosello dei 5 generi */
+.carosello {
+  display: flex; gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 -22px; padding: 4px 22px 8px;
+  scrollbar-width: none;
+}
+.carosello::-webkit-scrollbar { display: none; }
+.episodio {
+  flex-shrink: 0;
+  width: min(82vw, 380px);
+  min-height: 400px;
+  scroll-snap-align: center;
+  border-radius: var(--r-l);
+  border: 2px solid var(--c);
+  background: var(--bg);
+  padding: 24px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 16px;
+}
+.episodio h3 { font-size: 18px; color: var(--c); }
+.episodio p { font-family: var(--titoli); font-size: 22px; line-height: 1.35; }
+.episodio .piede { font-family: var(--titoli); font-style: italic; font-size: 14px; color: var(--testo-2); }
+.episodio.horror { animation: tremola 4s linear infinite; }
+@keyframes tremola { 0%,100%,92%{opacity:1} 94%{opacity:.6} 96%{opacity:1} 98%{opacity:.75} }
+.puntini { display: flex; justify-content: center; gap: 6px; }
+.puntini span { width: 6px; height: 6px; border-radius: 3px; background: var(--bordo); transition: width .2s; }
+.puntini span.attivo { width: 20px; background: var(--c); }
+
+/* Microfono */
+.mic {
+  width: 84px; height: 84px; border-radius: 50%;
+  border: 0; cursor: pointer;
+  background: var(--corallo); color: var(--inchiostro);
+  display: grid; place-items: center;
+  align-self: center;
+}
+.mic.attivo { animation: respira 1.4s ease-in-out infinite; background: #FF4D4D; }
+@keyframes respira { 0%,100%{box-shadow:0 0 0 0 rgba(255,77,77,.5)} 50%{box-shadow:0 0 0 18px rgba(255,77,77,0)} }
+
+/* DNA */
+.barra-tratto { height: 10px; border-radius: 5px; background: var(--superficie-2); overflow: hidden; }
+.barra-tratto > span { display: block; height: 100%; border-radius: 5px; }
+
+/* Attesa: il libro "sigillato" */
+.sigillo { display: grid; place-items: center; gap: 18px; text-align: center; padding: 40px 0; }
+.sigillo svg { animation: galleggia 2.4s ease-in-out infinite; }
+@keyframes galleggia { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+.solo-lettori { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

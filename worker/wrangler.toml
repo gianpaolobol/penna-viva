@@ -1,0 +1,25 @@
+name = "penna-viva-api"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "penna-viva"
+# Da sostituire con l'id restituito da: npx wrangler d1 create penna-viva
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[vars]
+# Origine dell'app (Cloudflare Pages). In locale: http://localhost:5173
+ALLOWED_ORIGIN = "http://localhost:5173"
+APP_URL = "http://localhost:5173"
+# Fornitore predefinito sulla nostra chiave e modelli (configurabili senza toccare il codice)
+GEMINI_MODEL = "gemini-2.5-flash"
+OPENROUTER_MODEL = "meta-llama/llama-3.3-70b-instruct:free"
+# Tetti di spesa
+TETTO_GIORNALIERO = "500"          # chiamate al giorno sulla nostra chiave, per tutta l'app
+GRATIS_PER_UTENTE = "3"            # giornate/DNA gratuiti per utente al giorno
+# "1" = fornitore finto per sviluppo e test (nessuna chiamata reale)
+MOCK_AI = "0"
+
+# Segreti (NON nel file): npx wrangler secret put GEMINI_API_KEY
+#                         npx wrangler secret put OPENROUTER_API_KEY   (facoltativo, riserva)
